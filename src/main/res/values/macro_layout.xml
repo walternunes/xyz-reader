@@ -2,8 +2,12 @@
     <!-- list -->
     <dimen name="list_side_margin">4dp</dimen>
     <dimen name="list_toolbar_side_margin">0dp</dimen>
-    <integer name="list_column_count">2</integer>
-
+    <!-- v1 change -->
+    <integer name="list_column_count">1</integer>
+    <!-- v1 add -->
+    <dimen name="list_top_padding">8dp</dimen>
+    <dimen name="list_bottom_padding">28dp</dimen>
+    <dimen name="appbar_elevation">4dp</dimen>
     <!-- detail -->
     <bool name="detail_is_card">false</bool>
     <dimen name="detail_photo_height">304dp</dimen>

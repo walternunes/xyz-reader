@@ -41,7 +41,8 @@ public class ArticleListActivity extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article_list);
+        // V1 change here
+        setContentView(R.layout.activity_article_list_v1);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -127,7 +128,8 @@ public class ArticleListActivity extends ActionBarActivity implements
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.list_item_article, parent, false);
+            // v1 change here
+            View view = getLayoutInflater().inflate(R.layout.list_item_article_v1, parent, false);
             final ViewHolder vh = new ViewHolder(view);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

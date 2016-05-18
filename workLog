@@ -1,0 +1,32 @@
+V1 changes:
+Trocado layout xml activity_article_list_v1 (full)
+  toolbar size attribute
+  toolbar color
+  removido margin top imagem logo
+Trocado atributo imagem no xml list_item_article
+Alterado numero de colunas Macro layout
+Adicionado Dimen usados nos arquivos xml
+ArticleListActivity aponta para os novos xml's de layout
+Criado arquivo Material color
+Adicionado Primary secondary e accent color no tema bacon.base
+
+TODO
+Tratar bola de loading
+Fazer icone de acordo com a cor
+Escolher accent color
+Pallete de cor no titulo
+scrim
+
+TODO 2
+Trocar fonte
+Melhorar activity detail
+Pallete de cor
+Cuidar margem de texto
+
+TODO 3
+Fazer animacao explode da activity grid pra detail
+Fazer animacao entre details
+
+
+TODO 4
+Arrumar Tablet
