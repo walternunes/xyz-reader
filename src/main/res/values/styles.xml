@@ -20,12 +20,18 @@
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/material_indigo500</item>
         <item name="colorPrimaryDark">@color/material_indigo800</item>
-        <item name="colorAccent">@color/material_indigo200</item>
+        <item name="colorAccent">@color/theme_accent</item>
     </style>
 
     <style name="Theme.Bacon.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Subhead.Article">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
 
+    <style name="TextAppearance.AppCompat.Body1.Article">
+        <item name="android:textSize">@dimen/text_size_xsmall</item>
+    </style>
 </resources>

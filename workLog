@@ -9,13 +9,15 @@ Adicionado Dimen usados nos arquivos xml
 ArticleListActivity aponta para os novos xml's de layout
 Criado arquivo Material color
 Adicionado Primary secondary e accent color no tema bacon.base
+Adicionado text sizes dimen
+Style text appearence
+Textcolor branco foi pro titulo (retirada ideia de pallete)
+Dimen alterado do recycler view
 
-TODO
-Tratar bola de loading
+TODO 1 - baseline OK
 Fazer icone de acordo com a cor
-Escolher accent color
-Pallete de cor no titulo
-scrim
+Pallete de cor no titulo *** removido problema de listview
+
 
 TODO 2
 Trocar fonte
@@ -29,4 +31,6 @@ Fazer animacao entre details
 
 
 TODO 4
+Tratar bola de loading
+Scrim
 Arrumar Tablet
