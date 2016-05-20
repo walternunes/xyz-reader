@@ -2,4 +2,8 @@
     <declare-styleable name="DrawInsetsFrameLayout">
         <attr name="insetBackground" format="color|reference" />
     </declare-styleable>
+    <!-- V2 change -->
+    <declare-styleable name="LockedImageView">
+        <attr name="aspectRatio" format="dimension"  />
+    </declare-styleable>
 </resources>

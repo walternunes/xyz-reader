@@ -34,4 +34,9 @@
     <style name="TextAppearance.AppCompat.Body1.Article">
         <item name="android:textSize">@dimen/text_size_xsmall</item>
     </style>
+
+    <style name="ArticleDetailAnchor">
+        <item name="android:layout_alignTop">@id/photo_container</item>
+        <item name="android:layout_alignBottom">@id/photo_container</item>
+    </style>
 </resources>

@@ -20,6 +20,15 @@ Pallete de cor no titulo *** removido problema de listview
 
 
 TODO 2
+Attr - Incluido LockedImageView
+Trocado versao no .java fragment Detail e palete de cores para vibrante
+Criado LockedImageView
+Add itens no dimens
+Add style pra ancora
+
+Deixar Status transparente
+Refactor nome ancora e placeholder
+Trocar text view color
 Trocar fonte
 Melhorar activity detail
 Pallete de cor
