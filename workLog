@@ -25,6 +25,8 @@ Trocado versao no .java fragment Detail e palete de cores para vibrante
 Criado LockedImageView
 Add itens no dimens
 Add style pra ancora
+List faz download da foto e não do thumb por questão de cache
+Palletes adicionadas
 
 Deixar Status transparente
 Refactor nome ancora e placeholder

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
 import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
@@ -51,7 +51,8 @@ public class ArticleDetailActivity extends ActionBarActivity
 
 
     //V2 change
-    private int mMutedColor = 0xFF333333;
+    private int mMutedColorDark;
+    private int mMutedColorPrimary;
     private ImageView mPhotoView;
     private FloatingActionButton mShareFab;
     private android.support.v7.widget.Toolbar mToolbar;
@@ -179,20 +180,36 @@ public class ArticleDetailActivity extends ActionBarActivity
                     @Override
                     public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                         Bitmap bitmap = imageContainer.getBitmap();
+
                         mPhotoView.setImageBitmap(bitmap);
                         System.out.println("fano color");
 
                         if (bitmap != null) {
                             System.out.println("fano color2");
                             Palette p = Palette.from(bitmap).generate();
-
-                            mMutedColor = p.getDarkVibrantColor(getResources().getColor(R.color.theme_primary_dark));
+                            Palette.Swatch swatch = p.getMutedSwatch();
+                            Palette.Swatch swatchDark = p.getDarkMutedSwatch();
+                            if(swatch != null && swatchDark != null) {
+                                mMutedColorDark = swatchDark.getRgb();
+                                mMutedColorPrimary = swatch.getRgb();
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+                                    Window window = getWindow();
+                                    System.out.println("fano color");
+                                    window.setStatusBarColor(mMutedColorDark);
+                                    mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
+                                }
+                                // mRootView.findViewById(R.id.meta_bar)
+                                //         .setBackgroundColor(mMutedColor);
+                            }
+                          /*  mMutedColorDark = p.getDarkVibrantColor(getResources().getColor(R.color.theme_primary_dark));
+                            mMutedColorPrimary = p.getVibrantColor(getResources().getColor(R.color.theme_primary));
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 Window window = getWindow();
 
-                                window.setStatusBarColor(mMutedColor);
+                                window.setStatusBarColor(mMutedColorDark);
+                                mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
                             }
-
+*/
                             //updateStatusBar();
                         }
                     }
@@ -223,7 +240,7 @@ public class ArticleDetailActivity extends ActionBarActivity
                 if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
                     System.out.println("banco teste2");
                     loadTitle(mCursor.getString(ArticleLoader.Query.TITLE));
-                    loadImageCollapsed(mCursor.getString(ArticleLoader.Query.PHOTO_URL));
+                    loadImageCollapsed(mCursor.getString(ArticleLoader.Query.THUMB_URL));
                     final int position = mCursor.getPosition();
                     mPager.setCurrentItem(position, false);
                     break;
