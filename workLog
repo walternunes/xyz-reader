@@ -14,34 +14,42 @@ Style text appearence
 Textcolor branco foi pro titulo (retirada ideia de pallete)
 Dimen alterado do recycler view
 
+V2 changes:
+
+
 TODO 1 - baseline OK
-Fazer icone de acordo com a cor
 Pallete de cor no titulo *** removido problema de listview
 
 
 TODO 2
 Attr - Incluido LockedImageView
 Trocado versao no .java fragment Detail e palete de cores para vibrante
-Criado LockedImageView
+Criado LockedImageView para custom aspect ratio
 Add itens no dimens
-Add style pra ancora
 List faz download da foto e não do thumb por questão de cache
 Palletes adicionadas
+Status bar na cor da foto
+Refeito toda Article Activity que está usando Collapselayout com o componente FAB
+Por motivos de teste ArticleDetailFragment foi substituido por blankFragment
+Imagem do artigo agora é carregado no collapse
+Titulo agora faz parte do title do collapse
+Subtitulo removido nessa versão
 
-Deixar Status transparente
-Refactor nome ancora e placeholder
-Trocar text view color
-Trocar fonte
-Melhorar activity detail
-Pallete de cor
-Cuidar margem de texto
+Remover fragment_article_detail_v2 (nao esta usando por causa do blank fragment) antes da baseline final V2
+Atentar a funcao getUpButtonFloor vai sair do fragment e passara para activity
 
 TODO 3
+Recolocar app:behavior_overlapTop="78dp" no viewpager do arquivo activity_article_detail_v2.xml
 Fazer animacao explode da activity grid pra detail
 Fazer animacao entre details
+Cuidar margem de texto
+Trocar fonte
 
 
 TODO 4
+Fazer icone de acordo com a cor
 Tratar bola de loading
 Scrim
+Ver espaçamento do FAB
 Arrumar Tablet
+Melhorar tratamento de cores na status bar (olhar vibrant only tbm)

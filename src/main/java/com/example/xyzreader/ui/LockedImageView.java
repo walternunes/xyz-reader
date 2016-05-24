@@ -43,9 +43,8 @@ public final class LockedImageView extends ImageView {
             int lockedHeight = MeasureSpec.getSize(heightSpec);
 
             if (lockedWidth == 0 && lockedHeight == 0) {
-                //TODO: think about this exception
-                //throw new IllegalArgumentException("Both width and height cannot be zero -- watch out for scrollable containers");
-            }
+                // Probably crash
+             }
 
             // Get the padding of the border background.
             int hPadding = getPaddingLeft() + getPaddingRight();

@@ -39,6 +39,7 @@ public class ArticleDetailActivity extends ActionBarActivity
     private Cursor mCursor;
     private long mStartId;
 
+    // V2 - warning - will be changed later
     private long mSelectedItemId;
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
@@ -46,6 +47,7 @@ public class ArticleDetailActivity extends ActionBarActivity
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private int mCurrentItem;
+  // V2 remove
   //  private View mUpButtonContainer;
   //  private View mUpButton;
 
@@ -66,8 +68,11 @@ public class ArticleDetailActivity extends ActionBarActivity
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
+
+        // V2 change
         setContentView(R.layout.activity_article_detail_v2);
 
+        // V2 - general changes for new layout
         getLoaderManager().initLoader(0, null, this);
         mPhotoView = (ImageView) findViewById(R.id.collapse_photo);
         mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -84,6 +89,7 @@ public class ArticleDetailActivity extends ActionBarActivity
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
+                // V2 removed
             /*    mUpButton.animate()
                         .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
                         .setDuration(300);*/
@@ -91,17 +97,18 @@ public class ArticleDetailActivity extends ActionBarActivity
 
             @Override
             public void onPageSelected(int position) {
-                System.out.println("fano >>");
                 if (mCursor != null) {
                     mCursor.moveToPosition(position);
                 }
                 mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
+                // V2 add
                 loadImageCollapsed(mCursor.getString(ArticleLoader.Query.PHOTO_URL));
                 loadTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+                // V2 change - warning will be fixed later
               //  updateUpButtonPosition();
             }
         });
-/*
+/*     V2 Remove
         mUpButtonContainer = findViewById(R.id.up_container);
 
         mUpButton = findViewById(R.id.action_up);
@@ -125,9 +132,7 @@ public class ArticleDetailActivity extends ActionBarActivity
             });
         }*/
 
-       /* if(getIntent().hasExtra(ArticleListActivity.EXTRA_TITLE_STRING))
-            loadTitle(getIntent().getExtras().getString(ArticleListActivity.EXTRA_TITLE_STRING));
-        getIntent().removeExtra(ArticleListActivity.EXTRA_TITLE_STRING);*/
+        // V2 add
         mToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +140,7 @@ public class ArticleDetailActivity extends ActionBarActivity
             }
         });
 
+        // V2 add
         final Activity activity = this;
         mShareFab = (FloatingActionButton) findViewById(R.id.share_fab);
         mShareFab.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +164,7 @@ public class ArticleDetailActivity extends ActionBarActivity
 
     }
 
-
+    // V2 add
     @Override
     protected void onResume() {
         super.onResume();
@@ -168,24 +174,22 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
     }
 
+    // V2 add
     private void loadTitle(String title){
-        System.out.println("fano load");
         mCollapsingToolbar.setTitle(title);
         mCollapsingToolbar.setExpandedTitleTextAppearance(R.style.TextAppearance_AppCompat_Medium);
     }
+
+    // V2 add
     private void loadImageCollapsed(String url){
-        System.out.println("fano>>" + url);
         ImageLoaderHelper.getInstance(this).getImageLoader()
                 .get(url, new ImageLoader.ImageListener() {
                     @Override
                     public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                         Bitmap bitmap = imageContainer.getBitmap();
-
                         mPhotoView.setImageBitmap(bitmap);
-                        System.out.println("fano color");
 
                         if (bitmap != null) {
-                            System.out.println("fano color2");
                             Palette p = Palette.from(bitmap).generate();
                             Palette.Swatch swatch = p.getMutedSwatch();
                             Palette.Swatch swatchDark = p.getDarkMutedSwatch();
@@ -198,18 +202,8 @@ public class ArticleDetailActivity extends ActionBarActivity
                                     window.setStatusBarColor(mMutedColorDark);
                                     mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
                                 }
-                                // mRootView.findViewById(R.id.meta_bar)
-                                //         .setBackgroundColor(mMutedColor);
                             }
-                          /*  mMutedColorDark = p.getDarkVibrantColor(getResources().getColor(R.color.theme_primary_dark));
-                            mMutedColorPrimary = p.getVibrantColor(getResources().getColor(R.color.theme_primary));
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                Window window = getWindow();
-
-                                window.setStatusBarColor(mMutedColorDark);
-                                mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
-                            }
-*/
+                            // V2 warning - Fixed later
                             //updateStatusBar();
                         }
                     }
@@ -231,16 +225,18 @@ public class ArticleDetailActivity extends ActionBarActivity
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
-        System.out.println("banco teste");
+
         // Select the start ID
         if (mStartId > 0) {
             mCursor.moveToFirst();
             // TODO: optimize
             while (!mCursor.isAfterLast()) {
                 if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
-                    System.out.println("banco teste2");
+
+                    // V2 add
                     loadTitle(mCursor.getString(ArticleLoader.Query.TITLE));
                     loadImageCollapsed(mCursor.getString(ArticleLoader.Query.THUMB_URL));
+
                     final int position = mCursor.getPosition();
                     mPager.setCurrentItem(position, false);
                     break;
@@ -248,7 +244,7 @@ public class ArticleDetailActivity extends ActionBarActivity
                 mCursor.moveToNext();
             }
             mStartId = 0;
-        }else mPager.setCurrentItem(0, false);
+        }//else mPager.setCurrentItem(0, false);
     }
 
     @Override
@@ -256,7 +252,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         mCursor = null;
         mPagerAdapter.notifyDataSetChanged();
     }
-/*
+/* V2 Removed
     public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
         if (itemId == mSelectedItemId) {
             mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
@@ -264,7 +260,8 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
     }
 */
-   /* private void updateUpButtonPosition() {
+   /* V2 - removed
+   private void updateUpButtonPosition() {
         int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
         mUpButton.setTranslationY(Math.min(mSelectedItemUpButtonFloor - upButtonNormalBottom, 0));
     }*/
@@ -277,8 +274,10 @@ public class ArticleDetailActivity extends ActionBarActivity
         @Override
         public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, position, object);
+            // V2 changed - will be fixed later changing to Article Detail Fragment
             BlankFragment fragment = (BlankFragment) object;
             if (fragment != null) {
+                // V2 warning - will be fixed later
               //  mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
                // updateUpButtonPosition();
             }
@@ -287,6 +286,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
+            // V2 changed - will be fixed later changing to Article Detail Fragment
             return BlankFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
         }
 

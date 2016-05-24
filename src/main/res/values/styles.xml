@@ -17,6 +17,8 @@
 
 <resources>
 
+    <!-- Theme styles -->
+
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/material_indigo500</item>
         <item name="colorPrimaryDark">@color/material_indigo800</item>
@@ -27,6 +29,8 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <!-- Text Appearence styles -->
+
     <style name="TextAppearance.AppCompat.Subhead.Article">
         <item name="android:textSize">@dimen/text_size_large</item>
     </style>
@@ -35,17 +39,19 @@
         <item name="android:textSize">@dimen/text_size_xsmall</item>
     </style>
 
-    <style name="ArticleDetailAnchor">
-        <item name="android:layout_alignTop">@id/photo_container</item>
-        <item name="android:layout_alignBottom">@id/photo_container</item>
+    <style name="TextAppearanceCollapseText" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+    <style name="TextAppearanceCollapseText.Detail" >
+        <item name="android:textSize">30sp</item>
     </style>
 
-    <style name="ToolBarWithNavigationBack">
+    <!-- Widget styles -->
+
+    <style name="BackArrowToolBar">
         <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
     </style>
 
-    <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-    <style name="CollapsingTextAppearance.Inverse" >
-        <item name="android:textSize">30sp</item>
-    </style>
+
+
+
 </resources>

@@ -18,8 +18,4 @@
     <dimen name="text_size_xlarge">20sp</dimen>
     <dimen name="text_size_xxlarge">24sp</dimen>
 
-
-    <item name="match_parent" type="dimen">-1</item>
-    <dimen name="article_detail_anchor_height">@dimen/match_parent</dimen>
-    <item name="placeholder_article_aspect_ratio" format="float" type="dimen">1.503671072</item>
 </resources>

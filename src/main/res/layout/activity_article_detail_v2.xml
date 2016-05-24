@@ -16,20 +16,23 @@
             android:id="@+id/detail_collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:background="@color/ltgray"
             app:contentScrim="?colorPrimary"
             app:expandedTitleMarginBottom="94dp"
-            app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
+            app:expandedTitleTextAppearance="@style/TextAppearanceCollapseText.Detail"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
+            <com.example.xyzreader.ui.LockedImageView
                 android:id="@+id/collapse_photo"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:transitionName="transform_image_anim"
+                android:maxHeight="500dp"
+                android:scaleType="centerCrop"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                style="@style/ToolBarWithNavigationBack"
+                style="@style/BackArrowToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@null"
@@ -39,7 +42,6 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
-        app:behavior_overlapTop="78dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

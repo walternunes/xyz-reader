@@ -20,13 +20,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/photo_placeholder">
 
-                <com.example.xyzreader.ui.LockedImageView
-                    android:id="@+id/photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:maxHeight="500dp"
-                    android:scaleType="centerCrop"
-                    app:aspectRatio="@dimen/placeholder_article_aspect_ratio" />
+
 
                 <View
                     android:layout_width="match_parent"
@@ -34,11 +28,7 @@
                     android:background="@drawable/photo_background_protection" />
 
             </FrameLayout>
-            <View
-                android:id="@+id/anchor"
-                style="@style/ArticleDetailAnchor"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/article_detail_anchor_height" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
