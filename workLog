@@ -15,13 +15,6 @@ Textcolor branco foi pro titulo (retirada ideia de pallete)
 Dimen alterado do recycler view
 
 V2 changes:
-
-
-TODO 1 - baseline OK
-Pallete de cor no titulo *** removido problema de listview
-
-
-TODO 2
 Attr - Incluido LockedImageView
 Trocado versao no .java fragment Detail e palete de cores para vibrante
 Criado LockedImageView para custom aspect ratio
@@ -35,6 +28,11 @@ Imagem do artigo agora é carregado no collapse
 Titulo agora faz parte do title do collapse
 Subtitulo removido nessa versão
 
+TODO 1 - baseline OK
+Pallete de cor no titulo *** removido problema de listview
+
+
+TODO 2
 Remover fragment_article_detail_v2 (nao esta usando por causa do blank fragment) antes da baseline final V2
 Atentar a funcao getUpButtonFloor vai sair do fragment e passara para activity
 
@@ -44,6 +42,8 @@ Fazer animacao explode da activity grid pra detail
 Fazer animacao entre details
 Cuidar margem de texto
 Trocar fonte
+Colocar overlapTop (78dp) no dimen
+Colocar margin no dimen do cardview fragment_article_detail
 
 
 TODO 4

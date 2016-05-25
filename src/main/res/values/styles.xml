@@ -23,6 +23,8 @@
         <item name="colorPrimary">@color/material_indigo500</item>
         <item name="colorPrimaryDark">@color/material_indigo800</item>
         <item name="colorAccent">@color/theme_accent</item>
+
+
     </style>
 
     <style name="Theme.Bacon.Detail">
@@ -37,6 +39,15 @@
 
     <style name="TextAppearance.AppCompat.Body1.Article">
         <item name="android:textSize">@dimen/text_size_xsmall</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Subhead.Article.Detail">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Body1.Article.Detail">
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
     <style name="TextAppearanceCollapseText" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>

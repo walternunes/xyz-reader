@@ -18,6 +18,9 @@ import android.support.v4.app.ShareCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.graphics.Palette;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,6 +107,7 @@ public class ArticleDetailActivity extends ActionBarActivity
                 // V2 add
                 loadImageCollapsed(mCursor.getString(ArticleLoader.Query.PHOTO_URL));
                 loadTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+
                 // V2 change - warning will be fixed later
               //  updateUpButtonPosition();
             }
@@ -174,6 +178,12 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
     }
 
+    /** V3 - to remove animation
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+*/
     // V2 add
     private void loadTitle(String title){
         mCollapsingToolbar.setTitle(title);
@@ -198,7 +208,6 @@ public class ArticleDetailActivity extends ActionBarActivity
                                 mMutedColorPrimary = swatch.getRgb();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
                                     Window window = getWindow();
-                                    System.out.println("fano color");
                                     window.setStatusBarColor(mMutedColorDark);
                                     mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
                                 }
@@ -275,7 +284,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, position, object);
             // V2 changed - will be fixed later changing to Article Detail Fragment
-            BlankFragment fragment = (BlankFragment) object;
+            ArticleDetailFragment fragment = (ArticleDetailFragment) object;
             if (fragment != null) {
                 // V2 warning - will be fixed later
               //  mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
@@ -286,8 +295,10 @@ public class ArticleDetailActivity extends ActionBarActivity
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
+            Fragment fragment = ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
+
             // V2 changed - will be fixed later changing to Article Detail Fragment
-            return BlankFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
+            return fragment;
         }
 
         @Override
