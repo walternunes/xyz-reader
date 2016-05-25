@@ -22,9 +22,11 @@ import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
@@ -165,6 +167,16 @@ public class ArticleDetailActivity extends ActionBarActivity
             }
         }
 
+        Display display = getWindowManager().getDefaultDisplay();
+        float width = display.getHeight();
+        TranslateAnimation animation = new TranslateAnimation(0, 0, width -50, 0); // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animation.setDuration(1000); // animation duration
+        //animation.setRepeatCount(5); // animation repeat count
+//        animation.setRepeatMode(2); // repeat animation (left to right, right to
+        // left )
+        // animation.setFillAfter(true);
+
+        mPager.startAnimation(animation);
 
     }
 
@@ -178,12 +190,12 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
     }
 
-    /** V3 - to remove animation
+    /** V3 - to remove animation*/
     @Override
     public void onBackPressed() {
         finish();
     }
-*/
+
     // V2 add
     private void loadTitle(String title){
         mCollapsingToolbar.setTitle(title);
@@ -296,6 +308,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
             Fragment fragment = ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
+
 
             // V2 changed - will be fixed later changing to Article Detail Fragment
             return fragment;
