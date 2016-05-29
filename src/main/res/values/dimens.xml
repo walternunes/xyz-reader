@@ -18,5 +18,6 @@
     <dimen name="text_size_xlarge">20sp</dimen>
     <dimen name="text_size_xxlarge">24sp</dimen>
 
-    <item name="article_detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
+    <!-- Fraction -->
+    <item name="detail_line_space" format="float" type="fraction">1.25</item>
 </resources>

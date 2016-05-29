@@ -39,7 +39,7 @@ Atentar a funcao getUpButtonFloor vai sair do fragment e passara para activity
 TODO 3
 Recolocar app:behavior_overlapTop="78dp" no viewpager do arquivo activity_article_detail_v2.xml
 Fazer animacao explode da activity grid pra detail
-Fazer animacao entre details
+Fazer animacao entre details (depthPage e Zoomout)
 Cuidar margem de texto
 Trocar fonte
 Colocar overlapTop (78dp) no dimen

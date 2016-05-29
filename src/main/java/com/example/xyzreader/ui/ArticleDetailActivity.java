@@ -86,6 +86,10 @@ public class ArticleDetailActivity extends ActionBarActivity
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
+
+        // V3 add
+        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        // mPager.setPageTransformer(true, new DepthPageTransformer());
         mPager.setPageMargin((int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
@@ -167,13 +171,13 @@ public class ArticleDetailActivity extends ActionBarActivity
             }
         }
 
+        // V3 add
         Display display = getWindowManager().getDefaultDisplay();
         float width = display.getHeight();
         TranslateAnimation animation = new TranslateAnimation(0, 0, width -50, 0); // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
         animation.setDuration(1000); // animation duration
         //animation.setRepeatCount(5); // animation repeat count
-//        animation.setRepeatMode(2); // repeat animation (left to right, right to
-        // left )
+        //animation.setRepeatMode(2); // repeat animation
         // animation.setFillAfter(true);
 
         mPager.startAnimation(animation);
@@ -190,7 +194,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
     }
 
-    /** V3 - to remove animation*/
+    /** V3 add - to remove reverse animation*/
     @Override
     public void onBackPressed() {
         finish();
