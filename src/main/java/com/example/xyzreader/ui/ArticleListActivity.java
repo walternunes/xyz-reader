@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -33,7 +34,7 @@ import com.example.xyzreader.data.UpdaterService;
  * activity presents a grid of items as cards.
  */
 public class ArticleListActivity extends ActionBarActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, SwipeRefreshLayout.OnRefreshListener {
 
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -50,17 +51,16 @@ public class ArticleListActivity extends ActionBarActivity implements
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        // V4 add
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getIntArray(R.array.swipe_progress_colors));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getLoaderManager().initLoader(0, null, this);
 
         if (savedInstanceState == null) {
-            refresh();
+            onRefresh();
         }
-    }
-
-    private void refresh() {
-        startService(new Intent(this, UpdaterService.class));
     }
 
     @Override
@@ -69,6 +69,8 @@ public class ArticleListActivity extends ActionBarActivity implements
         registerReceiver(mRefreshingReceiver,
                 new IntentFilter(UpdaterService.BROADCAST_ACTION_STATE_CHANGE));
     }
+
+
 
     @Override
     protected void onStop() {
@@ -87,6 +89,8 @@ public class ArticleListActivity extends ActionBarActivity implements
             }
         }
     };
+
+
 
     private void updateRefreshingUI() {
         mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
@@ -113,6 +117,12 @@ public class ArticleListActivity extends ActionBarActivity implements
         mRecyclerView.setAdapter(null);
     }
 
+    // V4 add
+    @Override
+    public void onRefresh() {
+        startService(new Intent(this, UpdaterService.class));
+    }
+
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
         private Cursor mCursor;
 
@@ -134,10 +144,16 @@ public class ArticleListActivity extends ActionBarActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this, view.findViewById(R.id.thumbnail), "transform_image_anim");
+                    // V4 add check
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this, view.findViewById(R.id.thumbnail), "transform_image_anim");
 
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),transitionActivityOptions.toBundle() );
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), transitionActivityOptions.toBundle());
+                    } else {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                    }
                 }
             });
             return vh;

@@ -21,6 +21,12 @@
             android:layout_height="fill_parent"
             android:background="@color/photo_placeholder" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/photo_list_background_protection"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

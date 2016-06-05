@@ -32,7 +32,7 @@ TODO 1 - baseline OK
 Pallete de cor no titulo *** removido problema de listview
 
 
-TODO 2
+TODO 2 - baseline OK
 Remover fragment_article_detail_v2 (nao esta usando por causa do blank fragment) antes da baseline final V2
 Atentar a funcao getUpButtonFloor vai sair do fragment e passara para activity
 
@@ -47,9 +47,12 @@ Colocar margin no dimen do cardview fragment_article_detail
 
 
 TODO 4
+Tratar bola de loading (cor e load fix)
+Add build checkers para api < 21 (maxWidth file com erro mas não é mais utilizado na latest)
+Add protection nas fotos do listview (photo_list_background_protection.xml)
+
 Fazer icone de acordo com a cor
-Tratar bola de loading
 Scrim
 Ver espaçamento do FAB
 Arrumar Tablet
-Melhorar tratamento de cores na status bar (olhar vibrant only tbm)
+Melhorar tratamento de cores na status bar (olhar vibrant only tbm) - não funciona

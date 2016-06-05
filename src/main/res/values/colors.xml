@@ -25,5 +25,9 @@
     <color name="text_detail_body1">#de000000</color>
 
 
+    <array name="swipe_progress_colors">
+        <item>@color/material_deeporange500</item>
+        <item>@color/material_indigo300</item>
+    </array>
 
 </resources>

@@ -228,8 +228,6 @@ public class ArticleDetailActivity extends ActionBarActivity
                                     mCollapsingToolbar.setContentScrim(new ColorDrawable(mMutedColorPrimary));
                                 }
                             }
-                            // V2 warning - Fixed later
-                            //updateStatusBar();
                         }
                     }
 
