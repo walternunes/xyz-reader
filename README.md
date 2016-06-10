@@ -3,7 +3,7 @@
 XYZ Reader is a RSS that was redesigned to be a Material application. The service of this application is static but can be changed to another dynamic service easily. This project is part of Udacity Android nanodegree.
 
 # **Contents and features** #
-## Designs covered in the app: ##
+## Designs covered (part of Material Design) in this app: ##
 * Surface Design
 * Adaptive Design
 * Meaningful Design
