@@ -10,6 +10,7 @@ XYZ Reader is a RSS that was redesigned to be a Material application. The servic
 * Bold Graphic Design 
 
 ## Technical UI information: ##
+* Dynamic height of images
 * Usage of shared elements and transitions animation
 * Usage of Volley to load images
 * Implemented different layouts for different devices (adaptive)
